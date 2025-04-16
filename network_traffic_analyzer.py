@@ -10,8 +10,9 @@ def analyze_logs(file_path):
         with open(file_path, "r") as log:
             for line in log:
                 for port in suspicious_ports:
-                    if f"Port: {port}" in line:
+                    if f":{port}" in line:
                         findings.append(line.strip())
+                        break
     except FileNotFoundError:
         print("File not found. Please check the file path.")
         return
